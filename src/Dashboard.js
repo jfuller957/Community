@@ -11,6 +11,8 @@ import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+import { CTX } from './Store';
+
 const useStyles = makeStyles(theme => ({
   root: {
     margin: '50px',
@@ -43,6 +45,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function Dashboard() {
   const classes = useStyles();
+
+  // Ctx Store
+  const [allChats] = React.useContext(CTX);
 
   const [textValue, changeTextValue] = React.useState('');
 
