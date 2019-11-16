@@ -8,7 +8,7 @@ const initState = {
     { from: 'Saber', msg: 'Sup' },
     { from: 'Caster', msg: 'Hey' }
   ],
-  topic2: [
+  focusGroup: [
     { from: 'Lancer', msg: 'hmph' },
     { from: 'Rider', msg: 'oh?' },
     { from: 'Berzerker', msg: '...' }
