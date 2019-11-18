@@ -47,7 +47,7 @@ export default function Dashboard() {
   const classes = useStyles();
 
   // Ctx Store
-  const [allChats] = React.useContext(CTX);
+  const { allChats, sendChatAction, user } = React.useContext(CTX);
 
   const topics = Object.keys(allChats);
 
@@ -82,7 +82,7 @@ export default function Dashboard() {
             {allChats[activeTopic].map((chat, i) => (
               <div className={classes.flex} key={i}>
                 <Chip label={chat.from} className={classes.chip} />
-                <Typography variant="p" component="p">
+                <Typography variant="body1" component="body1">
                   &nbsp;:&nbsp;{chat.msg}
                 </Typography>
               </div>
@@ -103,6 +103,14 @@ export default function Dashboard() {
               variant="contained"
               color="primary"
               className={classes.button}
+              onClick={() => {
+                sendChatAction({
+                  from: user,
+                  msg: textValue,
+                  topic: activeTopic
+                });
+                changeTextValue('');
+              }}
             >
               Send
             </Button>
