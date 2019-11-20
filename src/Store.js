@@ -51,7 +51,6 @@ export default function Store(props) {
     socket = io(':3001');
     socket.on('chat message', function(msg) {
       dispatch({ type: RECEIVE_MESSAGE, payload: msg });
-      // $('#messages').append($('<li>').text(msg));
     });
   }
 

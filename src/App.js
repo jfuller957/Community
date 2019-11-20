@@ -4,12 +4,15 @@ import './App.css';
 
 import Dashboard from './Dashboard';
 import Store from './Store';
+import { Switch } from '@material-ui/core';
+import Videoroom from './Videoroom';
 
 function App() {
   return (
     <div className="App">
       <Store>
         <Dashboard />
+        <Videoroom />
       </Store>
     </div>
   );
