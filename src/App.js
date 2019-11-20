@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App">
       <Store>
-        <Dashboard />
         <Videoroom />
+        <Dashboard />
       </Store>
     </div>
   );
