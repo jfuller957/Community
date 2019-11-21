@@ -6,7 +6,6 @@
   "main": "public/electron.js",
   "dependencies": {
     "@material-ui/core": "^4.6.1",
-    "axios": "^0.19.0",
     "electron-is-dev": "^1.1.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -30,7 +29,10 @@
     "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "preelectron-pack": "yarn build",
     "electron-pack": "build --em.main=build/electron.js",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Community\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,10 +52,12 @@
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
+    "axios": "^0.19.0",
     "babel-jest": "^24.9.0",
     "concurrently": "^5.0.0",
-    "electron": "^7.1.1",
+    "electron": "^7.1.2",
     "electron-builder": "^21.2.0",
+    "electron-packager": "^14.1.0",
     "jest": "^24.9.0",
     "react-test-renderer": "^16.12.0",
     "wait-on": "^3.3.0"

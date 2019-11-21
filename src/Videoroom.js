@@ -8,8 +8,16 @@ import { youtubeApiKey } from './config/credentials';
 
 class Videoroom extends React.Component {
   state = {
-    video: [],
+    videos: [],
     selectedVideo: null
+  };
+
+  componentDidMount() {
+    this.handleSubmit('pdf generation with react and node');
+  }
+
+  onVideoSelect = video => {
+    this.setState({ selectedVideo: video });
   };
 
   handleSubmit = async searchTerm => {
@@ -24,22 +32,24 @@ class Videoroom extends React.Component {
 
     this.setState({
       videos: response.data.items,
-      selectedVideo: response.data.item[0]
+      selectedVideo: response.data.items[0]
     });
   };
   render() {
+    const { selectedVideo, videos } = this.state;
+
     return (
-      <Grid justify="center" container spacing={10}>
+      <Grid justify="center" style={{ padding: '40px' }} container spacing={1}>
         <Grid item xs={12}>
-          <Grid container spacing={10}>
+          <Grid container spacing={1}>
             <Grid item xs={12}>
               <SearchBar onFormSubmit={this.handleSubmit} />
             </Grid>
             <Grid item xs={8}>
-              <VideoDetail />
+              <VideoDetail video={selectedVideo} />
             </Grid>
             <Grid item xs={4}>
-              {}
+              <VideoList videos={videos} onVideoSelect={this.onVideoSelect} />
             </Grid>
           </Grid>
         </Grid>

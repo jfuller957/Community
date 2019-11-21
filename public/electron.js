@@ -3,6 +3,9 @@ const path = require('path');
 const url = require('url');
 const isDev = require('electron-is-dev');
 
+// Set ENV
+process.env.NODE_ENV = 'production';
+
 let mainWindow;
 
 function createWindow() {
@@ -19,9 +22,9 @@ function createWindow() {
       label: 'Menu',
       submenu: [
         {
-          label: 'Youtube',
+          label: "Author's Github",
           click() {
-            shell.openExternal('https://youtube.com');
+            shell.openExternal('https://github.com/jfuller957');
           }
         },
         { type: 'separator' },
